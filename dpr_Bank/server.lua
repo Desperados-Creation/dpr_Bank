@@ -9,18 +9,11 @@ AddEventHandler('dpr_Bank:Depot', function(montant)
     if xPlayer.getMoney() >= montant then 
         xPlayer.removeMoney(montant)
         xPlayer.addAccountMoney('bank', montant)
-        local xPlayers = ESX.GetPlayers()        for i=1, #xPlayers, 1 do
-            local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-            Citizen.Wait(500)
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Banque', 'Dépôt', "Vous venez de déposer ~g~"..montant.."$ ~s~dans votre banque.", 'CHAR_BANK_MAZE', 1)
-        end
+        Citizen.Wait(500)
+		TriggerClientEvent('esx:showAdvancedNotification', _src, 'Banque', 'Dépôt', "Vous venez de déposer ~g~"..montant.."$ ~s~dans votre banque.", 'CHAR_BANK_MAZE', 1)
     else
-        local xPlayers = ESX.GetPlayers()        
-        for i=1, #xPlayers, 1 do
-            local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-            Citizen.Wait(500)
-            TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Banque', 'Dépôt', "Vous n'avez pas suffisament d'argent", 'CHAR_BANK_MAZE', 1)
-        end
+        Citizen.Wait(500)
+        TriggerClientEvent('esx:showAdvancedNotification', _src, 'Banque', 'Dépôt', "Vous n'avez pas suffisament d'argent", 'CHAR_BANK_MAZE', 1)
     end
 end)
 
@@ -31,19 +24,11 @@ AddEventHandler('dpr_Bank:Retrait', function(montant)
     if xPlayer.getAccount('bank').money >= montant then 
         xPlayer.removeAccountMoney('bank', montant)
         xPlayer.addMoney(montant)
-        local xPlayers = ESX.GetPlayers()        
-        for i=1, #xPlayers, 1 do
-            local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-            Citizen.Wait(500)
-			TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Banque', 'Retrait', "Vous venez de déposer ~g~"..montant.."$ ~s~dans votre banque.", 'CHAR_BANK_MAZE', 1)
-        end
+        Citizen.Wait(500)
+		TriggerClientEvent('esx:showAdvancedNotification', _src, 'Banque', 'Retrait', "Vous venez de déposer ~g~"..montant.."$ ~s~dans votre banque.", 'CHAR_BANK_MAZE', 1)
     else
-        local xPlayers = ESX.GetPlayers()        
-        for i=1, #xPlayers, 1 do
-            local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-            Citizen.Wait(500)
-            TriggerClientEvent('esx:showAdvancedNotification', xPlayers[i], 'Banque', 'Retrait', "Vous n'avez pas suffisament d'argent", 'CHAR_BANK_MAZE', 1)
-        end
+        Citizen.Wait(500)
+        TriggerClientEvent('esx:showAdvancedNotification', _src, 'Banque', 'Retrait', "Vous n'avez pas suffisament d'argent", 'CHAR_BANK_MAZE', 1)
     end
 end)
 
